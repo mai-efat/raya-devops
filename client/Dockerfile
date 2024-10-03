@@ -3,12 +3,12 @@ FROM node:18 AS builder
 
 # Set the working directory
 WORKDIR /app
+# Copy package.json and package-lock.json
 
 
 COPY package-lock.json ./
 
 
-# Copy package.json and package-lock.json
 COPY package*.json ./
 
 # Install dependencies
