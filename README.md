@@ -5,7 +5,7 @@
     Database: MySQL database service for data storage.
     Client: A Nuxt.js frontend application that interacts with the API, listening on port 3000.
     Nginx: A web server to serve the Nuxt.js application and proxy requests to the API.
-
+```
 project/
 ├── api/                        # Directory for the Laravel API
 │   ├── app/                    # Laravel application logic
@@ -34,7 +34,7 @@ project/
 │   └── server/                 # Server-side code for Nuxt.js (if applicable)
 │   └── nginx.conf 
 ├── docker-compose.yml      
-
+```
 
 1.Create a Dockerfile in the api/ directory for  Laravel API:
 
