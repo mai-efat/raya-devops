@@ -5,6 +5,7 @@
     Database: MySQL database service for data storage.
     Client: A Nuxt.js frontend application that interacts with the API, listening on port 3000.
     Nginx: A web server to serve the Nuxt.js application and proxy requests to the API.
+    #project structure 
 ```
 project/
 ├── api/                        # Directory for the Laravel API
@@ -35,18 +36,17 @@ project/
 │   └── nginx.conf 
 ├── docker-compose.yml      
 ```
-
+```
+steps:
 1.Create a Dockerfile in the api/ directory for  Laravel API:
-
 2-Create a Dockerfile in the client/ directory for  Nuxt.js frontend
 3-Create an Nginx configuration file  in the client/ directory to serve as a reverse proxy for the Nuxt.js frontend and Laravel backend
 4-2. Set up environment variables for both api and client
 5- Update credentials as necessary.
-5-Create a docker-compose.yml file in the root directory to manage the services:
+6-Create a docker-compose.yml file in the root directory to manage the services:
+7-Build and Run Containers
 
-6-Build and Run Containers
-
-
+```
 
 
 
