@@ -1,3 +1,4 @@
+    
 version: '3.8'
 
 services:
@@ -8,10 +9,8 @@ services:
     ports:
       - "3000:3000"  # Expose Nuxt.js app on port 3000
     environment:
-      - VITE_API_URL=http://nginx  # Point to Nginx for API requests
-    volumes:
-      - ./client:/app  # Mount your client source code to /app in the container
-
+      - VITE_API_URL=http://nginx:80  # Point to Nginx for API requests
+      - .env    
   nginx:
     image: nginx:latest
     volumes:

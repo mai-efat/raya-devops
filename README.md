@@ -1,27 +1,57 @@
-# Challenge
 
-## Overview
+#`This repository contains a web application consisting of the following components:
 
-This repository contains a simple web application with two main components:
+    API: A Laravel PHP backend that serves as the API, listening on port 8000.
+    Database: MySQL database service for data storage.
+    Client: A Nuxt.js frontend application that interacts with the API, listening on port 3000.
+    Nginx: A web server to serve the Nuxt.js application and proxy requests to the API.
 
-1. **API**: Written in Laravel PHP, the API serves as the backend for the application and listens on port 8000.
-2. **Client**: Developed using Nuxt.js, the client is the frontend of the application and listens on port 3000.
+#Proposed Project Directory Structure
+project/
+├── api/                     # Directory for the Laravel API
+│   ├── app/                 # Laravel application logic
+│   ├── artisan              # Laravel command-line tool
+│   ├── bootstrap/           # Files for bootstrapping Laravel
+│   ├── config/              # Configuration files for the application
+│   ├── database/            # Database migrations and seeds
+│   ├── Dockerfile           # Docker configuration for the Laravel application
+│   ├── composer.json        # PHP dependencies for Laravel
+│   ├── composer.lock        # Locked versions of PHP dependencies
+│   ├── phpunit.xml         # PHPUnit configuration for testing
+│   ├── public/              # Publicly accessible files (e.g., index.php)
+│   ├── resources/           # Views, assets, and language files for Laravel
+│   ├── routes/              # API and web routes for Laravel
+│   ├── storage/             # Storage for uploaded files, logs, and caches
+│   └── tests/               # Unit and feature tests for Laravel
+│
+├── client/                  # Directory for the Nuxt.js client
+│   ├── components/          # Reusable Vue components
+│   ├── pages/               # Pages of the Nuxt.js application
+│   ├── Dockerfile           # Docker configuration for the Nuxt.js application
+│   ├── nuxt.config.ts       # Nuxt.js configuration file
+│   ├── package.json         # Node.js dependencies for Nuxt.js
+│   ├── package-lock.json    # Locked versions of Node.js dependencies
+│   ├── public/              # Static files for the Nuxt.js app
+│   └── server/              # Server-side code for Nuxt.js (if applicable)| 
+|
+│
+│  
+├── docker-compose.yml        # Docker Compose configuration file                    
 
-### Environment Variables
 
-- **API Directory**: Take a look at the `.env` file in the API directory. It should contain the necessary credentials to connect to the database.
 
-  ```env
-    DB_CONNECTION=mysql
-    DB_HOST=db
-    DB_PORT=3306
-    DB_DATABASE=bookapi
-    DB_USERNAME=app
-    DB_PASSWORD=password
-  ```
 
-- **Client Directory**: Check the `.env` file in the Client directory. It should contain the connection string to connect to the API.
 
-  ```env
-    VITE_API_URL=http://api:8000
-  ```
+
+
+
+
+# Summary
+
+    Build and Start Containers:
+        Run docker-compose up --build to build and start all services.
+
+    Access the Application:
+        API: http://localhost:8000/api
+        Client: http://localhost:3000
+

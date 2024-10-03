@@ -1,7 +1,47 @@
-    
 version: '3.8'
 
 services:
+  # Database Service (MySQL)
+  db:
+    image: mysql:8.0 # Use the official MySQL version 8.0 image
+    container_name: mysql_db # Name the container for easy identification
+    restart: always # Automatically restart the container if it stops
+    env_file:
+      - ./api/.env # Load environment variables from the .env file
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD} # Set MySQL root password from the .env file
+      MYSQL_DATABASE: ${DB_DATABASE} # Set the database name from the .env file
+      MYSQL_USER: ${DB_USERNAME} # Set the database user from the .env file
+      MYSQL_PASSWORD: ${DB_PASSWORD} # Set the user password from the .env file
+    volumes:
+      - db_data:/var/lib/mysql # Persist database data using a Docker volume
+    ports:
+      - "3306:3306" # Map host port (default: 3306) to container port 3306
+
+  # Laravel Application Service
+  laravel:
+    build:
+      context: . # Use the current directory for the build context
+      dockerfile: Dockerfile # Specify the Dockerfile to use for building the Laravel container
+    container_name: laravel_app # Name the container for easy identification
+    restart: unless-stopped # Restart the container unless it is manually stopped
+    env_file:
+      - ./api/.env # Load environment variables from the .env file
+    environment:
+      DB_HOST: db # Set the database host to the `db` service name
+      DB_PORT: ${DB_PORT} # Set the database port, defaulting to 3306 if not provided
+      DB_DATABASE: ${DB_DATABASE} # Set the database name from the .env file
+      DB_USERNAME: ${DB_USERNAME} # Set the database username from the .env file
+      DB_PASSWORD: ${DB_PASSWORD} # Set the database password from the .env file
+    volumes:
+      - .:/var/www/html # Mount the current directory to `/var/www/html` in the container
+    ports:
+      - "8000:8000" # Map host port 8000 to container port 8000 for Laravel
+    depends_on:
+      - db # Ensure that the database container starts before the Laravel container
+
+# Define Docker volumes for persistent data storage
+
   nuxt-app:
     build:
       context: ./client  # Directory where your Dockerfile is located
@@ -20,6 +60,13 @@ services:
     depends_on:
       - nuxt-app  # Ensure the Nuxt.js app starts before Nginx
 
+
+
+
+volumes:
+  db_data:  # Corrected volume name for database storage
+
 networks:
   default:
     driver: bridge
+# Define Docker volumes for persistent data storage
