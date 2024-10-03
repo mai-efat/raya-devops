@@ -40,10 +40,11 @@ project/
 
 2-Create a Dockerfile in the client/ directory for  Nuxt.js frontend
 3-Create an Nginx configuration file  in the client/ directory to serve as a reverse proxy for the Nuxt.js frontend and Laravel backend
+4-2. Set up environment variables for both api and client
+5- Update credentials as necessary.
+5-Create a docker-compose.yml file in the root directory to manage the services:
 
-4-Create a docker-compose.yml file in the root directory to manage the services:
-
-5-Build and Run Containers
+6-Build and Run Containers
 
 
 
